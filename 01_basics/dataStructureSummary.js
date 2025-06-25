@@ -30,3 +30,9 @@ const myFunction=function(){
        Arrays  =>  object
        Function  =>  function
        Object  =>  object           */
+
+
+       /*********************************************************************************** */
+
+       //stack meomery(primitive) 
+       // heap meomery(non-primitive)
