@@ -1,2 +1,3 @@
-# js-youtube
-A code repo to learn js
+# Learning Javascript from scratch
+## Hitesh Choudhary
+- Chai aur Code
