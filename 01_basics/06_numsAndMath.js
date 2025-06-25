@@ -41,3 +41,5 @@ console.log(Math.round(4.6))
  console.log(Math.floor(Math.random()*(max-min+1))+min)
 
  //Math.floor(Math.random()*(max-min+1))+min
+
+ 
