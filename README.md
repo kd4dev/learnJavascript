@@ -3,5 +3,5 @@
 ## Chai aur Code
 
 - Learning Javascript 
-- Practing some git commands
+- "practising some git commands
 
