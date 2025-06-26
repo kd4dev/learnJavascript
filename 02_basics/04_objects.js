@@ -38,3 +38,34 @@ console.log(Object.keys(user)) //typeof array of keys of given object--[ 'id', '
 console.log(Object.values(user)) //typeof array of values of corresponding keys of given object-->[ '123abc', 'kedar', 'false' ]
 console.log(Object.entries(user))//typeof array of key-value pair as element-->[ [ 'id', '123abc' ], [ 'name', 'kedar' ], [ 'isLoggedIn', 'false' ] ]
 console.log(Object.hasOwnProperty('isLoggedIn'));// returns boolean based on is this key avialable in your object
+
+const course={
+    coursName:"learn javascript",
+    price:"free",
+    courseInstructor:"Hitesh Choudhary"
+}
+
+const{courseInstructor:kd}=course//sntatical sugar-->course.courseInstructor ye har bar likhna nahi padega aaab
+//it is called as object de-structure
+
+//console.log(courseInstructor) //Hitesh Choudhary :kd nahi kiya toh ye nahi chalega,agar :kd nahi use kiya toh har bar bina object ke use kar skte he par
+//aur chote syntax me kr skte he toh kyu na kare
+console.log(kd)//Hitesh Choudhary
+
+
+//pehle api se data xml format me ata tha,ab json me ata he
+//************json**************** */
+// {
+//     "name":"kedar",
+//     "courseName":"learn dsa",
+//     "price": "free",
+// }
+
+//generally object jaise hi hota he par name nahi hota object ka aur keys bhi strings me hi hoti he,values me numbers and booleans nahi ate string me
+//kabhi kabhi object ke array bhu ate he
+
+// [
+//     {},
+//     {},
+//     {}
+// ]
