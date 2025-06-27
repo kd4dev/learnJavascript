@@ -1,0 +1,14 @@
+global execution/envirnoment context
+function execution context
+eval execution context-->generally considered in global ,property he global ki
+
+
+1.meomery creation phase
+2.execution phase
+
+1.global-->allocated to this
+2.meomery phase-->sare variables ko collect krke apne pass rakh diya,as undefined
+                                 aur function ki definiton jati he bas
+
+3.execution phase-->variables ko value assign ki jayegi,jaise hi function ayega wo khudka
+                                   new variable envirnoment aur execution thread banayega(new executional context) 
