@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Learn Javascript</h1>
+    <button id="Start">Start</button>
+    <button id="Stop">Stop</button>
+</body>
+<script>
+    const sayDate=function(str){
+        console.log(str,Date.now().toLocaleString())
+    }
+    const n1=document.querySelector('#Start').addEventListener('click',function(e){
+        const print=setInterval(sayDate,1000,'hii')
+        const n=document.querySelector('#Stop').addEventListener('click',function(e){
+            clearInterval(print)
+        })
+    })
+</script>
+</html>
