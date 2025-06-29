@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color: wheat;">
+    <p>
+        0	UNSENT	Client has been created. open() not called yet.
+        <br>
+        1	OPENED	open() has been called.
+        <br>
+        2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+        <br>
+        3	LOADING	Downloading; responseText holds partial data.
+        <br>
+        4	DONE	The operation is complete.
+        </p>
+        <div id=""card>
+            imaag
+        </div>
+
+</body>
+<script>
+    const reqURL='https://api.github.com/users/kd4dev'
+    const xhr=new XMLHttpRequest()
+    xhr.open('GET',reqURL)
+    xhr.onreadystatechange=function(){// onreadystatechange ye har bar state change hone pe hamara function run karega
+        console.log(xhr.readyState) //4th pe jate hi kam hota he
+        if(xhr.readyState===4){
+            const data=JSON.parse(this.responseText )//this signify krta he ki iss function me aya he
+            //parse string ko JSON me convert kar deta he
+            console.log(data)
+        }
+    }
+    xhr.send()
+</script>
+</html>
