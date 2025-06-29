@@ -84,7 +84,38 @@ setInterval(function(){
 },1000)
 ```
 
-## Project 4
+## Project 5
+
+## Project Link [Click Here](https://stackblitz.com/@kedarbaswade2802/collections/learnjavascript)
+
+
+
+## Solution Code
+
+```javascript
+const insert = document.querySelector('#insert');
+window.addEventListener('keydown', (e) => {
+  insert.innerHTML = 
+    `<div class="color">
+      <table>
+        <tr>
+          <th>key</th>
+          <th>keyCode</th>
+          <th>Code</th>
+        </tr>
+        <tr>
+          <td> ${e.key===" "?"space":e.key}</td>
+          <td> ${e.keyCode} </td>
+          <td> ${e.Codee}</td>
+        </tr>
+      </table>
+    </div>`
+  ;
+});
+
+```
+
+## Project 6
 
 ## Project Link [Click Here](https://stackblitz.com/@kedarbaswade2802/collections/learnjavascript)
 
@@ -94,4 +125,53 @@ setInterval(function(){
 
 ```javascript
 
+  const randomColor = function () {
+      const hex = '0123456789ABCDEF';
+      let color = '#';
+      for (let i = 0; i < 6; i++) {
+        color += hex[Math.floor(Math.random() * 16)];
+      }
+      return color;
+};
+let intervalId;
+function startChangingColor(){
+      function changeBg(){
+        document.body.style.backgroundColor=randomColor()
+      }
+      if(!intervalId){
+        intervalId=setInterval(changeBg,1000)
+      }
+  
+}
+function stopChangingColor(){
+  clearInterval(intervalId)
+  intervalId=null
+}
+
+
+document.querySelector('#start').addEventListener('click',startChangingColor);
+
+document.querySelector('#stop').addEventListener('click', stopChangingColor);
+// const randomColor = function () {
+//   const hex = '0123456789ABCDEF';
+//   let color = '#';
+//   for (let i = 0; i < 6; i++) {
+//     color += hex[Math.floor(Math.random() * 16)];
+//   }
+//   return color;
+// };
+
+// let changeColor = function () {
+//   document.body.style.backgroundColor = randomColor();
+// };
+
+// document.querySelector('#start').addEventListener('click', function (e) {
+//   const k = setInterval(changeColor, 1000);
+//   document.querySelector('#stop').addEventListener('click', function (e) {
+//     clearInterval(k);
+//   });
+// });
+
+
 ```
+
