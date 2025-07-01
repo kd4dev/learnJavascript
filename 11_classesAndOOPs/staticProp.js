@@ -24,3 +24,7 @@ class Teacher extends User {
 
 const iphone = new Teacher("iphone", "i@phone.com")
 console.log(iphone.createId());
+
+
+// //Static method ko object se nahi, class se call karo.
+// Inheritance me bhi static method subclass par class ke through hi call hota hai, instance ke through nahi.

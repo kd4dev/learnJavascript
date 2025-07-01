@@ -19,6 +19,9 @@
                 .querySelector('button')
                 .addEventListener('click', this.handleClick.bind(this))
 
+                 // .bind(this) ka use yaha isliye kiya gaya hai taki handleClick method ke andar 'this'
+            // hamesha React class ke object ko hi point kare, chahe function kahin se bhi call ho.
+
         }
         handleClick(){
             console.log("button clicked");  
@@ -29,3 +32,16 @@
     const app = new React()
 </script>
 </html>
+
+    /*
+        Custom Notes (Easy Language):
+
+        - .bind(this) ka use tab hota hai jab aap chahte ho ki kisi function/method ke andar 'this' ka reference fix ho jaye.
+        - Yaha, agar .bind(this) nahi lagate toh handleClick ke andar 'this' undefined ya button ko point karta.
+        - .bind(this) lagane se handleClick ke andar 'this' hamesha React class ke object ko hi point karega.
+        - Isliye jab button click hota hai, 'this.server' sahi value print hoti hai.
+        - .bind(this) se aap kisi bhi function/method ka 'this' manually set kar sakte ho.
+    */
+
+
+    //matalb bind sachme kisi ko kisi cheese se bind krke rkhta he
