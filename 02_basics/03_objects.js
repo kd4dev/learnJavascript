@@ -1,43 +1,43 @@
-//singleton -->constructor-->object.creat
+// singleton --> constructor se banta hai --> Object.create()
+// object literals se singleton nahi banta
 
-//object literals-->no singleton 
+// key ko JS automatic string treat karta hai
+const mySym = Symbol("key1") // unique symbol
 
-//key ko pc apne app string man leta he
-const mySym=Symbol("key1")
-const JsUser={
-    name : "kedar",
-    "full name":"kedar baswade",
-    4 : "roasfdkn",
-    age : 19,
+const JsUser = {
+    name: "kedar",
+    "full name": "kedar baswade", // key with space
+    4: "roasfdkn", // key converted to string '4'
+    age: 19,
 
-    //mySym : "myKey1", //-->string
+    // mySym: "myKey1",  // yeh string key ban jata, Symbol nahi
+    [mySym]: "myKey1", // proper symbol key
 
-    [mySym] : "myKey1",  // -->symbol
-    email : "kedarbajsdbka!@Ngmail.com",
-    isLoggedIn : false ,
-    lastLoginDays : ["Monday","Sunday"]
+    email: "kedarbajsdbka!@Ngmail.com",
+    isLoggedIn: false,
+    lastLoginDays: ["Monday", "Sunday"]
 }
 
-console.log(JsUser.email) // dot lagane par string dene ki jarurat nahi he
-console.log(JsUser["email"]) // yaha he string ki tarah dene ki
+// Accessing values:
+console.log(JsUser.email)              // 👉 "kedarbajsdbka!@Ngmail.com"
+console.log(JsUser["email"])           // 👉 same result
+console.log(JsUser["full name"])       // 👉 "kedar baswade"
+// console.log(JsUser.full name) --> ❌ Syntax Error
+console.log(typeof mySym)             // 👉 "symbol"
+console.log(JsUser[mySym])            // 👉 "myKey1"
 
-//console.log(JsUser.full name) -->agar key me hi string ho toh ye dot wala possible hi nahi he
-console.log(JsUser["full name"]) 
+// Updating property
+JsUser.age = 20
 
-//console.log(typeof JsUser.mySym) //-->string
-console.log(typeof mySym) //symbol
-console.log( JsUser[mySym]) //myKey1
+Object.freeze(JsUser) 
+// Object is now frozen, changes won't apply
 
-
-JsUser.age=20
-
-Object.freeze(JsUser) //object frreze ho chuka he ab koi chane kiye toh bhi toh woh honge nahi
-
-JsUser.age=32
-console.log(JsUser)
+JsUser.age = 32 // No effect
+console.log(JsUser.age)              // 👉 20 (unchanged)
+console.log(JsUser)                  // 👉 entire object log
 
 /**
-  {
+{
   '4': 'roasfdkn',
   name: 'kedar',
   'full name': 'kedar baswade',
@@ -45,21 +45,48 @@ console.log(JsUser)
   email: 'kedarbajsdbka!@Ngmail.com',
   isLoggedIn: false,
   lastLoginDays: [ 'Monday', 'Sunday' ],
-  Symbol(key1): 'myKey1' -->yaha hum symbol kaise dikhata he yeh bhi dekh skte he
+  [Symbol(key1)]: 'myKey1'
 }
- */
+*/
 
-
-JsUser.greet=function(){
+// Adding methods (works only if freeze is removed temporarily)
+JsUser.greet = function () {
     console.log("Hello js user")
 }
 
-JsUser.greet2=function(){
-    console.log(`Hello js user,${this.name}`)
+JsUser.greet2 = function () {
+    console.log(`Hello js user, ${this.name}`)
 }
 
-//freeze ke comment hata diye he ye run krne ke liye,tab ye output aye he badme firse comment krdiya
- console.log(JsUser.greet) //[Function (anonymous)]
- console.log(JsUser.greet()) // Hello js user undefined
-  console.log(JsUser.greet2) // Function (anonymous)]
- console.log(JsUser.greet2()) //  Hello js user,kedar  undefined
+console.log(JsUser.greet)       // 👉 [Function (anonymous)]
+console.log(JsUser.greet())     // 👉 Hello js user
+
+console.log(JsUser.greet2)      // 👉 [Function (anonymous)]
+console.log(JsUser.greet2())    // 👉 Hello js user, kedar
+
+// Object.freeze() ➝ object ka structure aur values dono lock ho jaate hain
+// even new properties can't be added
+
+JsUser.newKey = "test"
+console.log(JsUser.newKey) // 👉 undefined
+
+// Object.seal() ➝ properties update ho sakte hain, par naye add/remove nahi ho sakte
+const obj = { name: "kedar" }
+Object.seal(obj)
+obj.name = "bhagwan"
+obj.age = 19
+console.log(obj) // 👉 { name: 'bhagwan' } → new key not added
+
+// Symbol keys are non-enumerable
+for (let key in JsUser) {
+    console.log(key)
+}
+// 👉 Output will NOT include Symbol(key1)
+
+console.log(Object.getOwnPropertySymbols(JsUser))
+// 👉 [ Symbol(key1) ] → manually access symbol keys
+
+// To clone an object
+const clone = Object.assign({}, JsUser) // shallow copy
+// OR
+const spreadClone = { ...JsUser }
