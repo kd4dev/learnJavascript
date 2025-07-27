@@ -4,4 +4,4 @@
 
 - Learning Javascript 
 - "practising some git commands
--added from linux(fedora)
+- added from linux(fedora)
